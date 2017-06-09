@@ -1,0 +1,64 @@
+{%extends "::base.html.twig"%}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style3.css') }}">
+{% endblock%}
+
+{% block body %}
+	<div class="row">
+		<h4 class="annonces">Créez une activité !</h4>
+		<div class="col-lg-offset-3 col-lg-6 form-horizontal">
+{{ form_errors(form) }}
+{{ form_start(form, {'method': 'post', 'action': path('addActivity')}) }}
+				<div>
+		      		<label class="control-label col-lg-4" for="name">Nom de l'activité:</label>
+		      		<div class="col-lg-6">
+{{ form_widget(form.name) }}
+		      		</div>
+{{ form_errors(form.name) }}
+		    	</div>
+		    	<br>
+		    	<div>
+		      		<label class="control-label col-lg-4" for="description">Description:</label>
+		      		<div class="col-lg-6">
+{{ form_widget(form.description) }}
+		      		</div>
+{{ form_errors(form.description) }}
+		    	</div>
+		    	<br>
+		    	<div>
+		      		<label class="control-label col-lg-4" for="date">Date:</label>
+		      		<div class="col-lg-6">
+{{ form_widget(form.date) }}
+		      		</div>
+{{ form_errors(form.date) }}
+		    	</div>
+		    	<br>
+		    	<div>
+		      		<label class="control-label col-lg-4" for="photo">Photo</label>
+		      		<div class="col-lg-6">
+{{ form_widget(form.photo) }}
+		      		</div>
+{{ form_errors(form.photo) }}
+		    	</div>
+		    	<br>
+				<div class="form-group">		    
+				    <div class="col-lg-offset-4 col-lg-8">
+				    	<input type="submit" value="Ajouter l'activité" />
+				    </div>		    
+				</div>	
+{% for flash_message in app.session.flashBag.get('success') %}
+				    <div class="alert alert-success">
+{{ flash_message }}
+					</div>
+{% endfor %}
+{% for flash_message in app.session.flashBag.get('error') %}
+				    <div class="alert alert-danger">
+{{ flash_message }}
+					</div>
+{% endfor %}	
+{{ form_end(form) }}
+    	</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BDE Strasbourg</title>
+        <link rel="shortcut icon" href="http://bde.exia-st.fr/wp-content/uploads/2016/01/logo-bde-st-vector-favicon.png">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        {% block header %}
+        {% endblock %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/scroll.js') }}"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        {% if app.user %}
+            <style type="text/css">
+                .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li
+                {                  
+                  width: calc(100% / 5);                 
+                }
+            </style>
+        {% else %}
+            <style type="text/css">
+                .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li
+                {                  
+                  width: calc(100% / 6);                 
+                }
+            </style>
+        {% endif %}
+    </head>
+
+    <body>
+    
+    {% if app.request.attributes.get('_route') == 'fos_user_security_login' %}
+        <div class="container page" id="container-login">
+    {% else %}
+        <div class="container page">
+    {% endif %}
+<div class="blocPrincipal">
+    <div class="row">
+        <div class="col-xs-12 col-lg-2 imgLogo">
+            <center><img src="{{ asset('img/logo.png') }}" ></center>
+        </div>
+
+{% if app.user %}
+        <div class=" col-xs-12 col-lg-8 noMargin">
+            <header>                        
+                <nav class="navbar navbar-inverse">
+                <div class="col-xs-5 col-lg-1 hidden-lg" style="color: white; height: 100%; line-height: 50px;">
+{{ app.user.prenom }}         
+                </div>
+                <div class="col-xs-7">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                    <div class="col-xs-12 collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav noMargin">
+                            <li><a href="{{ path('homepage') }}"><span class="titlemenu"></span>BDE</a></li>
+                            <li><a class="dropdown-toggle" data-toggle="dropdown" href="">Activités <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('activitiesShow') }}">Toutes les activités</a></li>
+                            <li><a href="{{ path('activityIdea') }}">Soumettre une idée d'activité</a></li>
+                            <li><a href="{{ path('showActivitiesVote') }}">Voter pour une activité</a></li>
+{% if app.user.roles[0] == "ROLE_BDE" %}
+                            <li><a href="{{ path('summaryActivity') }}">Voir les inscrits</a></li>
+                            <li><a href="{{ path('addActivity') }}">Ajouter un évènement</a></li>
+{% endif %}
+                        </ul>
+                            </li>                                        
+                            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                        </ul>
+                    </div>
+                                                            
+                </nav>
+            </header>
+        </div>
+            <div class="hidden-xs col-lg-1">
+                <img src="{{ asset('avatars/') }}{{ app.user.avatar }}" style="margin-top: 10px;" class="img-responsive" alt="Avatar">
+            </div>
+            <div class="hidden-xs col-lg-1" style="height: 80px; line-height: 80px;">
+{{ user.prenom }}         
+            </div>
+{% else %}
+            <div class="col-xs-12 col-lg-8 noMargin">
+                <header>
+                    <nav class="navbar navbar-inverse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="col-xs-12 collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ path('homepage') }}">BDE</a></li>
+                                <li><a href="{{ path('activitiesShow') }}">Activités</a></li>
+                                <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                                <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                            </ul>  
+                        </div>                         
+                    </nav>
+                </header>
+            </div>
+{% endif %}
+            </div>
+            <div class="contenu">
+{% block body %}
+{% endblock %}   
+            </div>
+    <footer>
+    <div class="row">
+            <div class="col-xs-5 col-lg-5">
+                Exia.CESI<br>2 Allée des Foulons<br>67380 LINGOLSHEIM
+            </div>
+            <div class="col-xs-5 col-lg-2">
+                <img class="exia" src="{{asset('img/Logo_exia.png')}}">
+            </div>
+            <div class="col-xs-12 col-lg-3 mentionLegales">
+                <a href="{{ path('showMentionsLegales') }}">
+                    <h5>Mentions légales</h4>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+{% block javascripts %}
+{% endblock %}
+        </div>
+    </body>
+</html>

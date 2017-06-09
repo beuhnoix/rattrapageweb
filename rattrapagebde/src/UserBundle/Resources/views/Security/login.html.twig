@@ -1,0 +1,31 @@
+{% extends "UserBundle::layout.html.twig" %}
+{% block header%}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+{% endblock  %}
+{% block body %}
+<div class="row">
+    <div class="element">
+{% trans_default_domain 'FOSUserBundle' %}
+{% if error %}
+    Mauvais identifiants
+{% endif %}
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+{% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+{% endif %}
+            <div class="input-group col-xs-offset-2 col-lg-offset-1">
+                <span class="input-group-addon input"></span>
+                <input type="text" name="_username" value="{{ last_username }}" required="required" /><br>
+            </div>
+            <div class="input-group col-xs-offset-2 col-lg-offset-1">
+                <span class="input-group-addon input"><i></i></span>
+                <input type="password" name="_password" required="required" /><br>
+            </div>
+            <br>
+            <input type="checkbox" name="_remember_me" value="on" />
+            <label for="remember_me" class="remember">{{ 'security.login.remember_me'|trans }}</label><br>
+            <input type="submit" class="btn btn-primary" name="_submit" value="Se connecter" />
+        </form>
+    </div>
+</div>    
+{% endblock  %}

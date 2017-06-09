@@ -1,0 +1,39 @@
+{%extends "::base.html.twig"%}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/styleListActivity.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+	<h4 class="annonces">Activitiés prévues :</h4>
+{% for activity in activitiesFutur %}
+		<div class="col-xs-offset-1 col-xs-10 col-lg-offset-1 col-lg-10 activity">
+			<div class="row">
+				<div class="col-xs-12 col-lg-9">
+					<a class="noStyle" href="{{ path('signInActivity', {'activity_id': activity.id}) }}">
+						<h4 class="title">{{ activity.name }}</h4>
+					</a>
+				</div>
+				<div class="col-xs-12 col-lg-3">
+					<h4 class="date">{{ activity.date|date('d/m/Y H:i:s') }}</h4><br>
+				</div>
+			</div>
+			<div class="row activityInfo">
+				<div class="col-xs-12 col-lg-3 ctnBtn">
+					<img class="img-responsive" src="{{ asset('imgActivities/') }}{{ activitiesPhoto[activity.id] }}">
+				</div>
+				<div class="col-xs-12 col-lg-9">
+					<p class="description">{{activity.description}}</p>
+					<a href="{{ path('signInActivity', {'activity_id': activity.id}) }}"><button class="btn btn-default details">Détails</button></a>
+				</div>
+				<div class="col-xs-12 col-lg-5">
+					<a href="{{ path('signInActivity', {'activity_id': activity.id}) }}"><button type="submit">S'inscrire</button></a>
+				</div>
+			</div>
+		</div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{%extends "::base.html.twig"%}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style3.css') }}">
+{% endblock%}
+
+{% block body %}
+	<div class="row">
+	<h4 class="annonces">Soumettez une idée d'activité !</h4>
+	<div class="col-lg-offset-3 col-lg-6 col-xs-offset-2 col-xs-8">
+{{ form_errors(form) }}
+
+{{ form_start(form, {'method': 'post', 'action': path('activityIdea')}) }}
+
+			<div>
+	      		<label class="control-label col-lg-4" for="name">Nom de l'activité:</label>
+	      		<div class="col-lg-6">
+{{ form_widget(form.name, { 'attr': { 'class': 'form-control'} }) }}
+	      		</div>
+{{ form_errors(form.name) }}
+	    	</div>
+	    	<div>
+	      		<label class="control-label col-lg-4" for="description">Description:</label>
+	      		<div class="col-lg-6">
+{{ form_widget(form.description, { 'attr': { 'class': 'form-control'} }) }}
+	      		</div>
+{{ form_errors(form.description) }}
+	    	</div>
+	    	<div>
+	      		<label class="control-label col-lg-4" for="date">Date:</label>
+	      		<div class="col-lg-6">
+{{ form_widget(form.date) }}
+	      		</div>
+{{ form_errors(form.date) }}
+	    	</div>
+			
+			<div>		    
+			    <div class="col-lg-offset-4 col-lg-8">
+			    	<input type="submit" value="Soumettre l'idée" />
+			    </div>		    
+			</div>	
+{% for flash_message in app.session.flashBag.get('success') %}
+			    <div class="alert alert-success">
+{{ flash_message }}
+				</div>
+{% endfor %}
+{% for flash_message in app.session.flashBag.get('error') %}
+			    <div class="alert alert-danger">
+{{ flash_message }}
+				</div>
+{% endfor %}	
+{{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,121 @@
+{% extends "::base.html.twig" %}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/styleInscrits.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<h4 class="annonces">Récapitulatif des inscrits</h4>
+		<br>
+		<form class="formActivities">
+			<div class="col-lg-offset-3 col-lg-8 col-xs-offset-2 col-xs-8">
+				<div class="row">
+					<div class="col-lg-3">
+						<label>Choix de l'activité :</label>
+					</div>
+					<div class="col-lg-6">
+						<select name="activities">
+{% for activity in activities %}
+								<option value="{{ activity.name }}" id="{{ activity.id }}" class="nameActivity" >{{ activity.name }}</option>
+{% endfor%}
+						</select>
+					</div>				
+				</div>
+				<br>
+				<br>
+				<br>
+			</div>
+		</form>
+		<br>
+		<dir class="row">
+			<br><br>
+		</dir>
+	<div class="row">
+		<br><br>
+		<div class="col-lg-offset-1 col-lg-10  col-xs-offset-2 col-xs-8 responsive-table-line">
+			<table class="table table-body-center">
+				<thead>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Promotion</th>
+					<th>Adresse mail</th>
+				</thead>
+
+				<tbody id="usersInfo">
+					{% for userInfo in usersInfo %}
+						<tr>
+							<td data-title="Nom">{{ userInfo[0] }}</td>
+							<td data-title="Prenom">{{ userInfo[1] }}</td>
+							<td data-title="Promotion">{{ userInfo[2] }}</td>
+							<td data-title="Adresse mail">{{ userInfo[4] }}</td>
+						</td>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function()
+{
+	$('.activities').on("change", function()
+	{
+		var activity_id = $(this).find(":selected").attr("id");
+
+		$.ajax({
+			type: "GET",
+			url: "{{ path('showUsersRegistered') }}",
+			cache: false,
+			data: {activity_id: activity_id},
+			success: function(data){
+				var date = new Date(data[0]['date']);
+				var day = date.getDate();
+				var month = parseInt(date.getMonth()+1);
+
+				if(month >= 1 && month <= 9)
+				{
+					month = '0'+month;
+				}
+
+				if(day >= 1 && day <= 9)
+				{
+					day = '0'+day;
+				}
+
+				var year = date.getFullYear();
+
+				var hour = date.getHours();
+
+
+				if(hour >= 0 && hour <= 9)
+				{
+					hour = '0'+hour;
+				}
+
+				var minute = date.getMinutes();
+
+				if(minute >= 0 && minute <= 9)
+				{
+					minute = '0'+minute;
+				}
+
+				var second = date.getSeconds();
+
+				if(second >= 0 && second <= 9)
+				{
+					second = '0'+second;
+				}
+
+	           	$('#dateActivity').val(day+'/'+month+'/'+year+' '+hour+':'+minute+':'+second);
+	           	$('#activityUsersRegistered').val(data[1]);
+	            $('#usersInfo').html(data[2]);
+	        }
+		});
+	});	
+});
+</script>
+{% endblock %}

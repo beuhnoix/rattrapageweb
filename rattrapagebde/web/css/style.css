@@ -1,0 +1,228 @@
+html, body{
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+body
+{
+  background-color: rgb(255, 51, 51);
+  background-image:url(img/cesi.png);
+}
+
+h1 
+{
+  text-align: center;
+}
+
+.page
+{
+  min-height: 100%;
+  position: relative;
+}
+
+.blocPrincipal
+{
+  padding-bottom: 130px;
+}
+
+footer 
+{
+  font-family: courier;
+  font-size: 130%;
+  color: red;
+  height: 100%;
+  position: absolute;
+  bottom: 87px;
+  right: 45px;
+  left: 45px;
+  padding-bottom: 60px;
+}
+
+.container
+{
+	background-color: rgb(190, 190, 190);
+	border: solid 1px rgb(190, 190, 190);
+	min-height: 100%;
+}
+
+.navbar
+{
+  background-color: rgb(190, 190, 190);
+  border-color: rgb(190, 190, 190);
+  margin-top: 2.5%;
+}
+
+.navbar-inverse .navbar-nav>.active>a
+{
+  background-color: rgb(255, 51, 51);
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a
+{
+  color: white;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li
+{
+  color: white;
+  text-align: center;
+}
+
+.navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover
+{
+  background-color: rgb(255, 51, 51);
+}
+
+.navbar-collapse
+{
+  padding: 0;
+  width: 100%;
+}
+
+ul
+{
+  width: 100%;
+}
+
+img
+{
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.description 
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.annonces
+{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(160, 160, 160);
+  padding: 2.5px;
+  height: 40px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.reseaux>.liste_reseaux
+{
+  list-style-type: none;
+  text-align: center;
+}
+
+.reseaux>.liste_reseaux>li>img
+{
+  width: 60px;
+}
+
+.dropdown-menu
+{
+  min-width: 210px;
+}
+
+.caret
+{
+  float: right;
+  margin-top: 8px;
+}
+
+#container-login
+{
+  background-image: url("http://commons.studyrama.com/data/bc2e/20952/photo_953.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.element
+{
+    padding: 2%;
+    position: absolute;
+    margin-top: 18%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 225px;
+    width: 300px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+footer
+{
+  height:50px;
+}
+
+.input-group-addon, .input-group-btn
+{
+  padding-right: 2px;
+  width: 0;
+}
+
+input
+{
+  height: 30px;
+}
+
+.remember
+{
+  position: relative; 
+  bottom: 11px; 
+}
+
+.mentionLegales
+{
+  text-align: right;
+}
+
+.exia
+{
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .noMargin {
+    margin: 0;
+  }
+
+  .imgLogo
+  {
+    width: 100%;
+  }
+
+  .nav > li {
+    display: inline;
+  }
+
+  .element
+  {
+      margin-top: 80%;
+      padding-top: 12%;
+  }
+
+  #container-login
+  {
+    background-image: none;
+  }
+
+  .remember
+  {
+    color: white;
+  }
+
+  .mentionLegales
+  {
+    text-align: left;
+  }
+
+}

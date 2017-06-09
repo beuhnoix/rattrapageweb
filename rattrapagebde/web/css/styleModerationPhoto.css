@@ -1,0 +1,47 @@
+.checked {
+	opacity:0.5;
+	color:#996;
+}
+
+.ti{
+	text-align: center;
+}
+
+.photoModeration
+{
+  height: 15vh;
+  width: auto;
+}
+
+.photoModal
+{
+  height: auto;
+  width: 100%;
+}
+
+.align
+{
+  text-align: center;
+}
+
+.noMargin
+{
+  margin: 0;
+  padding: 0;
+}
+
+.modal-dialog
+{
+  
+}
+
+@media screen and (max-width: 900px){
+  .h3 
+  {
+    font-size: 10px;
+  }
+
+  div .h3 {
+    text-align: center;
+  }
+}

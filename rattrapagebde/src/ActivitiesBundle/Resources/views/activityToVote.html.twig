@@ -1,0 +1,89 @@
+{%extends "::base.html.twig"%}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/styleVote.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-xs-12 col-lg-12">
+			<h3 class="titleActivity">{{ activity.name }}</h3>
+		</div>
+		<div class="col-xs-12 col-lg-12 hidden-lg">
+		</div>
+		<div class="col-xs-12 col-lg-12 hidden-xs">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-lg-offset-1 col-lg-10 conteneurImg">
+			<img class="img1" id="" src="{{ asset('imgActivities/index.jpg') }}">
+		</div>
+	</div>
+	
+	<div class="row noMargin">
+		<div class="col-xs-12 col-lg-offset-1 col-lg-10">
+			<p class="description">{{ activity.description }}</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-offset-1 col-lg-10 col-xs-offset-1">
+			<p>Choisissez votre date et votre horaire :</p>
+			<div class="row btnAdj">
+				<form class="formActivities" name="voter" method="post" action="{{ path('activitiesVote') }}">
+					<div class="col-lg-3 col-xs-offset-2 col-xs-6 champVote">
+						<select name="horaire" class="horaire" id="{{ activity.id }}" class="form-control">
+							{% for date in dates[activity.id] %}											
+								<option value="{{ date|date('Y-m-d H:i:s') }}">{{ date|date('d/m/Y H:i:s') }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-lg-1 col-xs-2 btnAdj">
+						<input type="hidden" name="id" value="{{ activity.id }}">
+						<button class="btn btn-primary voter" type="submit">Voter</button>
+					</div>
+
+					<div class="col-lg-1 col-xs-offset-2 col-xs-1 pouce">
+						<span class="glyphicon glyphicon-thumbs-up"></span>	
+					</div>
+					<div class="col-lg-l  col-xs-1">
+						<span id="vote{{ activity.id }}">{{ votes[activity.id] }}</span>
+					</div>					
+				</form>
+				{% if app.user.roles[0] == "ROLE_BDE" %}
+				<br><br>
+				<div class="row">
+					<div class="col-xs-3 col-lg-3 addMarges">
+						<a href="{{ path('closingVote', {'activityIdea_id': activity.id}) }}"><button class="btn btn-primary">Cloturer les votes</button></a>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function()
+{
+	$('.horaire').on("change", function()
+	{
+		var activity_id = $(this).attr("id");
+		var date = $(this).val();
+
+		$.ajax({
+			type: "GET",
+			url: "{{ path('showActivityLike') }}",
+			cache: false,
+			data: {activity_id: activity_id, date: date},
+			success: function(data){
+	           $('#vote' + activity_id).html(data);
+	        }
+		});
+	});	
+});
+</script>
+{% endblock %}

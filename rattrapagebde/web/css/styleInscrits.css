@@ -1,0 +1,140 @@
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+}
+.annonces
+{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(160, 160, 160);
+  padding: 2.5px;
+  height: 40px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+body
+{
+  background-color: rgb(255, 51, 51);
+}
+
+.container
+{
+  background-color: rgb(190, 190, 190);
+  border: solid 1px rgb(190, 190, 190);
+  border-radius: 5px;
+  min-height: 100%;
+  padding: 1%;
+}
+
+.navbar
+{
+  background-color: rgb(190, 190, 190);
+  border-color: rgb(190, 190, 190);
+  margin-top: 2.5%;
+}
+
+.navbar-inverse .navbar-nav>.active>a
+{
+  background-color: rgb(190, 190, 190);
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a
+{
+  color: white;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li
+{
+  color: white;
+  width: calc(100% / 6);
+  text-align: center;
+}
+
+.navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover
+{
+  background-color: rgb(255, 51, 51);
+}
+
+ul
+{
+  width: 100%;
+}
+
+img
+{
+  width :100px;
+  margin-bottom: 20px;
+}
+
+.responsive-table-line td { 
+position: relative;
+padding-left: 50%;
+white-space: normal;
+}
+ 
+.responsive-table-line td:before { 
+position: absolute;
+top: 0px;
+left: 0px;
+width: 45%; 
+padding-right: 15px; 
+height:100%;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow:hidden;
+text-align:left;
+background-color:#f8f8f8;
+padding:2px;
+}
+
+.noMargin {
+    margin-left: 0;
+  }
+
+@media screen and (max-width: 900px){
+  h3 
+  {
+    font-size: 20px;
+  }
+
+  div h3 {
+    text-align: center;
+  }
+
+  .responsive-table-line td:before { 
+    content: attr(data-title);
+  }
+  .responsive-table-line table{
+    display: block;
+  } 
+  .responsive-table-line thead{
+    display: block;
+  } 
+  .responsive-table-line tbody{
+    display: block;
+  }
+  .responsive-table-line th{
+    display: none;
+  } 
+  .responsive-table-line td {
+    display: block;
+    position: relative;
+  } 
+  .responsive-table-line tr { 
+    display: block;  
+  }
+
+  .largeur
+  {
+    width: 100%;
+  }
+
+  .table > tbody > tr > td
+  {
+    padding-left: 40%;
+  }
+
+}

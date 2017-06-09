@@ -1,0 +1,193 @@
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+body
+{
+	background-color: rgb(255, 51, 51);
+}
+
+.annonces
+{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(160, 160, 160);
+  padding: 2.5px;
+  height: 40px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.container
+{
+	background-color: rgb(190, 190, 190);
+	border: solid 1px rgb(190, 190, 190);
+	border-radius: 5px;
+	min-height: 100%;
+  padding: 1%;
+}
+
+.details 
+{
+  text-align: left;
+  background: transparent;
+  border: 0px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.navbar
+{
+  background-color: rgb(190, 190, 190);
+  border-color: rgb(190, 190, 190);
+  margin-top: 2.5%;
+}
+
+.navbar-inverse .navbar-nav>.active>a
+{
+  background-color: rgb(190, 190, 190);
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a
+{
+  color: white;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li
+{
+  color: white;
+  width: calc(100% / 6);
+  text-align: center;
+}
+
+.navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>li>a:hover
+{
+  background-color: rgb(255, 51, 51);
+}
+
+ul
+{
+  width: 100%;
+}
+
+img
+{
+  width :100px;
+  margin-bottom: 20px;
+}
+
+div h3 {
+  text-align: center;
+}
+
+
+
+.activityVote {
+  border: solid;
+}
+
+.activityVote h4 
+{
+  text-align: center;
+}
+
+.pouce
+{
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.champVote
+{
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.input-group{
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+.btnAdj {
+  padding: 0;
+}
+
+.formActivities {
+  margin: 0;
+}
+
+.activityVote
+{
+  padding-bottom: 10px;
+}
+
+.conteneurImg {
+  text-align: center;
+}
+
+.img1 {
+  max-height: 15vh;
+  width: auto;
+  font-weight: bold;
+}
+
+.noStyle
+{
+  text-decoration: none;
+  color: black;
+}
+
+.noStyle:hover
+{
+  color: rgb(255, 51, 51);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.titleActivity
+{
+  text-align: left;
+}
+
+.addMarges
+{
+  margin-left: 10px;
+}
+
+.noMargin
+{
+  margin-left: 0;
+}
+
+
+.activityVote
+{
+  border-style: solid;
+}
+
+@media screen and (max-width: 900px){
+  h3 
+  {
+    font-size: 20px;
+  }
+
+  div h3 {
+    text-align: center;
+  }
+
+
+  .img1{
+    height: 200px
+    width: 300px;
+  }
+
+}
+
+
+

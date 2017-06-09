@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{asset('css/styleBase.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-lg-offset-2 col-lg-8">
+		<h4 class="annonces">Bienvenue sur le site du BDE de Strasbourg !</h4>
+		
+	</div>
+</div>
+
+<div class="row">
+    <section class="col-lg-offset-2 col-lg-8">          
+      	<h4 class="annonces">Réseaux sociaux</h4>
+      	<h1>Suivez nous sur les réseaux sociaux !</h1>
+        <br><br><br>
+      	<div class="reseaux">
+        	<ul class="liste_reseaux">
+          		<li class="facebook">
+            		<a href="https://www.facebook.com/ExiaCesiStrasbourg/" target="onglet"><img src="{{ asset('img/facebook.png') }}"></a>
+	          	</li>
+              <br><br><br>
+	         	<li class="twitter">
+	            	<a href="https://twitter.com/CesiStrasbourg" target="onglet"><img src="{{ asset('img/twitter.png') }}"></a>
+            </li>
+       	 	</ul>
+      	</div>
+    </section>
+</div>
+{% endblock %} 
+
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+	$("#banner").liScroll({travelocity: 0.15});
+});
+</script>
+{% endblock %}
